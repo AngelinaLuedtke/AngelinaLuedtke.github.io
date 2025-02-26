@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelina und Luca 💖</title>
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(45deg, #000428, #004e92);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: Arial, sans-serif;
+            color: white;
+            opacity: 0;
+            animation: fadeInPage 4s forwards;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            color: #fff;
+            animation: fadeInText 2s ease-out;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .intro {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .heart {
+            width: 80px;
+            height: 80px;
+            background-color: #ff4d6d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: pulseAnimation 1.5s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes pulseAnimation {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .card {
+            background: #fff;
+            color: #333;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .text-content {
+            display: none;
+            font-size: 18px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .link {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            display: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            color: #ff4d6d;
+        }
+
+        .map-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .map-container img {
+            width: 40%;
+            border-radius: 10px;
+        }
+
+        .code-message {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 18px;
+            color: #f0f0f0;
+            margin-top: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .code-message span {
+            display: inline-block;
+            opacity: 0;
+        }
+
+        .thank-you-card {
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 18px;
+            text-align: left;
+            display: none;
+        }
+
+        .show-card-btn {
+            font-size: 20px;
+            color: white;
+            background-color: #ff4d6d;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .show-card-btn:hover {
+            background-color: #ff1a4d;
+        }
+        
+        .code-message {
+            cursor: pointer;
+            font-family: monospace;
+            color: #4CAF50;
+            font-size: 16px;
+        }
+        pre {
+            font-family: monospace;
+            color: #4CAF50;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+
+   
+        .error-message {
+            color: red;
+            font-size: 16px;
+        }
+
+        #content {
+            display: none;
+            opacity: 0;
+            animation: fadeInPage 2s forwards;
+        }
+
+        .password-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #00000;
+        }
+
+        .password-input {
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: #871614;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff1a4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="password-container" id="password-container">
+        <h1>Passwort Eingabe erforderlich</h1>
+        <input type="text" id="password" class="password-input" placeholder="  Passwort ">
+        <button class="submit-btn" onclick="checkPassword()">Bestätigen</button>
+        <p class="error-message" id="error-message"></p>
+    </div>
+
+    <div id="content">
+        <h1>💖 Angelina und Luca 💖</h1>
+    <p class="intro">27.02.2024 – Unser Tag! 🗓️</p>
+
+    
+    <!-- Hochzählende Zeit seit dem 27. Februar -->
+    <div class="countdown" id="countdown"></div>
+
+    <div class="image-container">
+        <img src="img/20250202220712.jpg" alt="Besonderer Moment" style="width: 80%; border-radius: 10px; margin-top: 20px;">
+    </div>
+
+
+    <p class="intro">1 Jahr voller Liebe </p>
+
+    <p>Tippe auf ein Herz! </p>
+    <div class="container">
+        <div class="heart" onclick="showMessage(0)">❤️</div>
+        <div class="heart" onclick="showMessage(1)">❤️</div>
+        <div class="heart" onclick="showMessage(2)">❤️</div>
+        <div class="heart" onclick="showMessage(3)">❤️</div>
+    </div>
+
+    <p id="message"></p>
+
+    <div class="card" onclick="toggleText('erste_geschichte')">
+        <h2>Als unsere Geschichte ihren Anfang nahm ⏳</h2>
+        <p class="text-content" id="erste_geschichte">Es gibt Begegnungen, die das Leben für immer verändern. Man erwartet sie nicht, sie passieren einfach – und plötzlich ist nichts mehr wie vorher. Manchmal genügt ein einziger Moment, ein einziges Gespräch, um zu spüren, dass etwas ganz Besonderes beginnt. Genau so war es, als wir das erste Mal miteinander schrieben. Es war, als hätten wir uns längst gekannt, als wären wir nicht Fremde, sondern zwei Seelen, die sich endlich gefunden haben. Die Gespräche flossen mühelos, jedes Wort fühlte sich vertraut an, und es dauerte nicht lange, bis wir merkten: Das hier ist etwas Besonderes.
+Doch eine Sache stand zwischen uns – 612 Kilometer. Eine Distanz, die für viele ein Hindernis wäre, doch für uns nur eine Zahl. Von Anfang an fühlte es sich nicht so an, als würden uns Ländergrenzen trennen. Unsere Herzen kamen sich von Tag zu Tag näher, und je mehr wir voneinander erfuhren, desto klarer wurde uns, dass diese Verbindung stärker war als jeder Kilometer zwischen uns.</p>
+    </div>
+
+    <div class="card" onclick="toggleText('zweite_geschichte')">
+        <h2>Mehr als nur Worte 💌</h2>
+        <p class="text-content" id="zweite_geschichte">Es begann mit einer einfachen Nachricht, doch daraus wurde schnell etwas, das unseren Alltag bestimmte. Unsere Gespräche waren nicht wie gewöhnliche Unterhaltungen. Sie hatten Tiefe, sie hatten Bedeutung. Wir redeten über alles – über die kleinen Dinge, die den Alltag ausmachen, aber auch über die großen Themen, die uns im Innersten beschäftigen. Unsere Träume, unsere Ängste, unsere Vergangenheit – nichts blieb unausgesprochen.Ich weiß noch, wie ich jedes Mal auf mein Handy sah und hoffte, dass eine neue Nachricht von dir da war. Und wenn sie kam, dann war es, als würde für einen Moment die Welt stehen bleiben. Ich konnte spüren, dass du nicht einfach nur antwortetest, um zu antworten – du meintest jedes Wort ernst.
+Unsere Telefonate wurden länger, aus Minuten wurden Stunden. Und irgendwann wurde es zur Gewohnheit, bis tief in die Nacht miteinander zu sprechen. Manchmal waren es ernste Gespräche, manchmal einfach nur albernes Lachen über die verrücktesten Dinge. Es war egal, worüber wir sprachen – Hauptsache, wir hatten einander.
+Und dann kam der Moment, an dem klar war: Nur Schreiben und Telefonieren reicht nicht mehr.</p>
+    </div>
+
+    <div class="card" onclick="toggleText('dritte_geschichte')">
+        <h2>Und plötzlich standst du vor mir 👩🏽‍🤝‍👨🏻</h2>
+        <p class="text-content" id="dritte_geschichte">Ohne langes Zögern hast du entschieden, mich zu besuchen. Du hast ein Airbnb gebucht, einen Plan gemacht – und plötzlich war es Realität. Ich konnte es kaum glauben, dass du wirklich kommen würdest.
+Die Nacht vor deinem Besuch war schlaflos. Mein Kopf war voller Gedanken: Wie wird es sein, dich in echt zu treffen? Wird es sich genauso vertraut anfühlen wie am Telefon? Die Aufregung war riesig, aber die Vorfreude noch größer.
+Und dann warst du da. Ich erinnere mich genau an den Moment, als wir uns das erste Mal gegenüberstanden. Keine Unsicherheit, kein peinliches Schweigen – nur ein tiefes Gefühl der Vertrautheit, das all meine Zweifel ausradierte.
+Kaum warst du angekommen, sind wir sofort losgefahren – 612 Kilometer hatten wir überwunden, jetzt wollten wir keine Sekunde verlieren. Ich wollte dir meine Welt zeigen, und als Erstes ging es zu meiner Schule. Wir hatten Hunger – also hielten wir an, um gemeinsam zu frühstücken. Es war so ein einfacher Moment, und doch so besonders. Mit dir zu sitzen, zu reden, zu lachen – es fühlte sich an, als hätten wir das schon tausendmal gemacht.
+Aber wir waren noch lange nicht fertig.
+Von dort aus begann unsere kleine Entdeckungstour – und sie führte uns quer durch die Stadt. Wir hielten in Parks, spazierten durch Grünanlagen, fuhren durch Straßen, die für mich alltäglich waren, aber durch deine Augen plötzlich ganz neu wirkten. Gefühlt haben wir jeden einzelnen Park abgeklappert, jeden schönen Ort mitgenommen, den wir finden konnten. Ich wollte dir alles zeigen, und du hast jeden Moment mit mir genossen.
+Irgendwann, nach all den Stunden, landeten wir im Airbnb. Ein langer Tag voller Eindrücke lag hinter uns, aber es war erst der Anfang.
+Die nächsten Tage waren wie ein Traum. Wir sind nach Dresden gefahren, haben meine Umgebung entdeckt. Ich kann mich noch genau erinnern, wie wir durch die Straßen liefen, uns über alles Mögliche unterhielten und dabei einfach die Zeit vergaßen.
+Ich zeigte dir meine Lieblingsorte, die Plätze, an denen ich am liebsten bin. Die kleinen, versteckten Ecken, die man nicht auf Anhieb findet, die aber für mich mit Erinnerungen gefüllt sind. Ich wollte, dass du alles siehst – nicht nur die Sehenswürdigkeiten, sondern auch die Orte, die für mich Heimat bedeuten
+Doch wie bei allem Schönen ging die Zeit viel zu schnell vorbei. Der Abschied kam viel zu früh, und mit ihm das Gefühl, dass noch so viel Zeit fehlt. Die letzten gemeinsamen Stunden waren schwer, weil wir wussten, dass wir uns bald wieder trennen mussten.
+Als du gingst, fühlte es sich an, als würde ein Teil von mir mit dir gehen. Aber wir wussten beide: Das war erst der Anfang.
+</p>
+    </div>
+
+    <div class="card" onclick="toggleText('vierte_geschichte')">
+        <h2>Wo Entfernungen keine Bedeutung haben 🚘 🛩️</h2>
+        <p class="text-content" id="vierte_geschichte">Nach diesem ersten Besuch wurde unsere Verbindung nur noch stärker. Die Kilometer zwischen uns wurden nicht weniger, aber sie fühlten sich immer unwichtiger an. Mit jedem Besuch, mit jeder Reise wuchs unsere Geschichte weiter.
+Doch irgendwann wollte ich nicht mehr nur darauf warten, dass du zu mir kommst. Also habe ich meinen ersten Flug zu dir gebucht. Ich weiß noch, wie mein Herz raste, als ich am Flughafen stand. Doch in dem Moment, als ich dich sah, wusste ich wieder: Alles war es wert.
+Eine Fernbeziehung ist nicht immer leicht. Es gab Tage, an denen die Sehnsucht fast unerträglich war. Nächte, in denen wir uns nichts mehr wünschten, als einfach nebeneinander einzuschlafen. Momente, in denen die 612 Kilometer wie eine unüberwindbare Wand zwischen uns standen.
+Aber trotz all der schwierigen Zeiten haben wir nie aufgegeben.
+Jeder Abschied tat weh, aber jedes Wiedersehen machte alles wieder gut. Jeder Kilometer, den wir zurücklegten, brachte uns nur noch näher.
+Und irgendwann wird es keinen Abschied mehr geben.
+Irgendwann werden wir keine Kilometer mehr zählen müssen. Keine Reisen planen müssen. Keine Sehnsucht mehr ertragen müssen.
+Denn das hier ist nicht nur eine Geschichte über eine Fernbeziehung.
+Das hier ist unsere Geschichte.
+Und sie ist noch lange nicht zu Ende.</p>
+    </div>
+
+    <!-- Coding-Liebesnachricht -->
+    <p class="code-message" onclick="showCodeMessage()">Klicke hier </p>
+<p>  um eine eine geheime Nachricht zu sehen ... 👩‍💻</p>
+    <div id="code-message-content" class="code-message" style="display: none;">
+        <pre id="line-1"></pre>
+        <pre id="line-2"></pre>
+        <pre id="line-3"></pre>
+        <pre id="line-4"></pre>
+        <pre id="line-5"></pre>
+    </div>
+
+    <!-- Karten nebeneinander -->
+    <div class="map-container">
+        <img src="img/20250202210048.jpg" alt="Luxemburg">
+        <span style="font-size: 24px; font-weight: bold;">🇱🇺  🇩🇪</span>
+        <img src="img/20250202210101.jpg" alt="Deutschland">
+    </div>
+
+    <p class="intro">612 km Entfernung</p>
+    <p class="intro">Unsere Liebe kennt keine Distanz! ❤️</p>
+
+    <!-- Dankeskarte -->
+    <button class="show-card-btn" onclick="toggleCard()">Zeige die Nachricht 💌</button>
+    <div class="thank-you-card" id="thank-you-card">
+        <h2>Danke für alles! 🙏</h2>
+        <p>Es gibt Momente im Leben, in denen Worte nicht ausreichen, um das auszudrücken, was man wirklich fühlt. Momente, in denen ein einfaches „Danke“ viel zu klein erscheint, um die Dankbarkeit und Liebe zu beschreiben, die tief im Herzen verborgen liegen. Genau so ein Moment ist jetzt – denn es fällt mir schwer, in Worte zu fassen, wie viel du mir bedeutest und wie dankbar ich für dich bin.
+Unser Jahrestag ist für mich nicht nur ein Datum, nicht nur eine Erinnerung daran, wann alles begann – er ist ein Symbol für alles, was wir zusammen erlebt haben. Für die unzähligen Nachrichten und Anrufe, für die Momente des Lachens und der Sehnsucht, für jede einzelne Sekunde, die uns nähergebracht hat. Für all die Höhen, die wir gemeinsam gefeiert haben, und die Herausforderungen, die wir gemeistert haben.</p>
+
+        <p>Ein Geschenk kann vieles sein – ein Zeichen der Liebe, eine Erinnerung, eine Geste, die zeigt, dass man an jemanden denkt. Aber für mich war es vor allem eines: Eine Möglichkeit, dir zu zeigen, wie viel du mir bedeutest.
+Ein Geschenk mit Bedeutung
+Ich habe lange darüber nachgedacht, was ich dir zu diesem besonderen Tag schenken kann. Es sollte nicht einfach nur etwas sein, das man kauft und einpackt – es sollte etwas sein, das von Herzen kommt. Etwas, das zeigt, wie wichtig du mir bist, wie sehr ich unsere gemeinsame Zeit schätze und wie viel Gedanken ich mir um dich mache.
+Ein Geschenk ist für mich nicht nur ein materieller Gegenstand, sondern etwas, das eine Geschichte erzählt. Und genau das wollte ich dir geben: Ein Geschenk mit Bedeutung, eines, das uns widerspiegelt. </p>
+
+
+<p>Programmieren ist eine meiner größten Leidenschaften. Es ist nicht nur ein Hobby oder eine Fähigkeit – es ist ein Teil von mir. In jeder Zeile Code steckt meine Kreativität, mein Ehrgeiz, meine Begeisterung. Und deshalb wollte ich genau das nutzen, um dir etwas zu schenken, das nicht nur ein Zeichen meiner Liebe ist, sondern auch ein Teil von dem, was mich ausmacht.
+Während ich an diesem Geschenk gearbeitet habe, habe ich an uns gedacht. An unsere ersten Gespräche, an die schlaflosen Nächte, in denen wir einfach nicht aufhören konnten zu reden, an das erste Mal, als wir uns gesehen haben. Ich habe an die 612 Kilometer gedacht, die uns nie wirklich getrennt haben, an all die Parks, durch die wir gelaufen sind, an jede einzelne Sekunde, in der wir zusammen waren.
+Jede Zeile, jede Entscheidung, die ich beim Erstellen dieses Geschenks getroffen habe, war durchdrungen von meinen Gedanken an dich. Es war nicht einfach nur ein Projekt – es war ein Ausdruck meiner Gefühle, meiner Liebe, meiner Dankbarkeit für alles, was du mir gibst.</p>
+
+
+<p>Vielleicht ist dieses Geschenk nicht das Größte oder das Auffälligste, aber es ist einzigartig, weil es von Herzen kommt. Es trägt Erinnerungen, Gedanken und Emotionen in sich – genau wie unsere Geschichte.
+Wir haben so viel zusammen erlebt, und ich weiß, dass noch so viel mehr vor uns liegt. Wir haben bewiesen, dass Entfernung keine Rolle spielt, dass echte Verbindung nicht von Kilometern abhängt, sondern von den Menschen, die sie teilen. Und genau das wollte ich mit meinem Geschenk festhalten: Dass wir zusammengehören, egal, wo wir sind, egal, wie weit wir voneinander entfernt sind.
+Jede Zeile Code erzählt von uns – von unserer Vergangenheit, von unserer Gegenwart und von all den Momenten, die noch kommen werden.</p>
+
+
+<p>Ich bin so dankbar für dich. Für alles, was du für mich tust, für jede kleine Geste, für jedes liebe Wort. Dafür, dass du mich verstehst, dass du immer für mich da bist, dass du mich so nimmst, wie ich bin. Dieser Jahrestag ist nur ein Meilenstein auf unserem gemeinsamen Weg – einer von vielen, die noch kommen werden.
+Ich hoffe, dass dieses Geschenk dich genauso berührt, wie es mich berührt hat, es für dich zu erschaffen. Denn es ist mehr als nur ein Geschenk – es ist ein Symbol für unsere Liebe, für die Erinnerungen, die wir bereits haben, und für all die, die wir noch gemeinsam sammeln werden.
+Ich liebe dich von ganzem Herzen. Und ich freue mich auf alles, was noch vor uns liegt.</p>
+    </div>
+
+    
+
+    <script>
+		
+       function checkPassword() {
+            var enteredPassword = document.getElementById('password').value;
+            var correctPassword = '27.02.2024'; // Beispiel: Passwort als Datum eingeben
+            if (enteredPassword === correctPassword) {
+                document.getElementById('password-container').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                document.getElementById('error-message').textContent = 'Falsches Passwort, bitte versuche es erneut.';
+            }
+        }
+
+
+        // Berechnung der Zeit seit dem 27. Februar 2024
+        function countdown() {
+            var startDate = new Date("February 27, 2024 00:00:00").getTime();
+            var now = new Date().getTime();
+            var timeElapsed = now - startDate;
+            
+            var days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+            var elapsedText = days + " Tage " + hours + " Stunden " + minutes + " Minuten " + seconds + " Sekunden";
+
+            document.getElementById("countdown").innerHTML = "" + elapsedText;
+        }
+
+        setInterval(countdown, 1000);
+    
+
+        // Nachricht bei Herz-Klick
+        function showMessage(index) {
+            var messages = [
+                "Ich bin so froh, dich zu haben! 💖",
+                "Du bedeutest mir alles! ❤️",
+                "Du machst mein Leben vollkommen! 💕",
+                "Für immer zusammen, Hand in Hand! 🤝"
+            ];
+            document.getElementById("message").innerText = messages[index];
+        }
+
+        // Text anzeigen
+        function toggleText(id) {
+            var element = document.getElementById(id);
+            element.style.display = element.style.display === "block" ? "none" : "block";
+        }
+
+        // Dankeskarte anzeigen
+        function toggleCard() {
+            var card = document.getElementById("thank-you-card");
+            card.style.display = card.style.display === "block" ? "none" : "block";
+        }
+
+        // Geheime Nachricht
+        function showCodeMessage() {
+            const codeMessage = document.getElementById("code-message-content");
+            codeMessage.style.display = 'block';
+            const codeLines = [
+                'console.log("Du bist mir so wichtig.");',
+                'let love = true;',
+                'if (love) {',
+                '    console.log("Ich liebe dich!");',
+                '}',
+                'setTimeout(() => {',
+                '    console.log("Für immer!");',
+                '}, 2000);'
+            ];
+
+            let lineIndex = 0;
+
+            function typeLine() {
+                if (lineIndex < codeLines.length) {
+                    let currentLine = codeLines[lineIndex];
+                    let charIndex = 0;
+                    let currentElement = document.getElementById('line-' + (lineIndex + 1));
+
+                    currentElement.innerHTML = '';
+
+                    function typeChar() {
+                        if (charIndex < currentLine.length) {
+                            currentElement.innerHTML += currentLine.charAt(charIndex);
+                            charIndex++;
+                            setTimeout(typeChar, 100);
+                        }
+                    }
+
+                    typeChar();
+                    lineIndex++;
+                    setTimeout(typeLine, currentLine.length * 100);
+                }
+            }
+
+            typeLine();
+        }
+    </script>
+</body>
+</html>

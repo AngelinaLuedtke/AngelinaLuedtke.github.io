@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.landkarte {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.landkarte img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.landkarte:hover {
+    transform: scale(1.05);
+}
+
+.textBox {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    display: none;
+}
+
+.countdown {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
